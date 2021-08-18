@@ -11,6 +11,7 @@ namespace IntroProject
         string name;
         string characterJob;
         int power;
+        string path;
         //Stage Variables
 
         public void Run()
@@ -60,10 +61,38 @@ namespace IntroProject
 
             if (characterJob == "Soldier")
             {
+                Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("You arrive in a small village, your duty is to collect gifts from the peasants for your king. While the town looks poor and your sense of pride wavers, you stick to your loyalty to the king and ride into the village. After dismounting from your hourse you knock on the nearest buildings door. A small frizzled man opens it cautiosly and speaks aloud:");
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.WriteLine("Hint: You are able to free response to certain NPC's, just make sure to use specific key words and keep it all lowercase. For this instance use words like 'take' 'gold' 'for' 'king'");
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("[Gilgamesh]: I-I am Gilgamesh, What brings thou here s-sir knight?");
+                Console.ForegroundColor = ConsoleColor.White;
+                string response;
                 Console.Write($"<Sir {name}> ");
-                Console.ReadLine();
+                response = Console.ReadLine();
+                bool validResponse = false;
+                while (validResponse == false) 
+                {
+                    if (response.Contains("take") && response.Contains("gold") && response.Contains("king") || response.Contains("taking"))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("[Gilgamesh]: M-My gold?! Wh-Whatever could the king need it for?! Is he not the king!");
+                    }
+                    else if (response.Contains("your") && response.Contains("gold") && response.Contains("for") && response.Contains("king"))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("[Gilgamesh]: M-My gold?! Wh-Whatever could you need it for sir knight!");
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("[Gilgamesh]: I- Uhm... I'm n-not sure I quite understand sir knight.");
+                    }
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write($"<Sir {name}> ");
+                    response = Console.ReadLine();
+                }
             }
             
         }
